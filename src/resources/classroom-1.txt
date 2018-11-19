@@ -1,0 +1,4 @@
+Classroom {
+  kursi (40)
+  proyektor (2)
+}
