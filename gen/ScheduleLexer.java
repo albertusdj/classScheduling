@@ -1,4 +1,4 @@
-// Generated from C:/Users/irfanmim/Desktop/Kuliah Semester 7/Tugas-tugas/RPLSD Tubes 1/classScheduling/src\Schedule.g4 by ANTLR 4.7
+// Generated from C:/Users/User/ClassScheduling/src\Schedule.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
