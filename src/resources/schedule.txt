@@ -1,69 +1,72 @@
 Schedule {
   Classroom {
-    7602 {
-      capacity (40)
-      facility { 
+    7602 [40] {
         proyektor (1)
         vga (1)
         hdmi (1)
-      }
     }
-    7606 {
-      capacity (40)
-      facility { 
-        proyektor (1)
-        vga (1)
-        hdmi (1)
-      }
+    7606 [40] {
+      proyektor (1)
+      vga (1)
+      hdmi (1)
     }
   }
   Lecturer {
     Bayu { 
-      time {
-        senin (17.00-23.00)
-          jumat (9.00-11.00,13.00-14.00)
-      }
+      senin (07.00-12.00)
+      jumat (9.00-11.00,13.00-14.00)
     }
-    Yani {
-      time {
-        kamis (00.00-02.00)
-      }
+    Adi {
+      kamis (00.00-02.00)
+    }
+    Yudis {
+      selasa (10.00-12.00)
     }
   }
   Class {
-    IF4050 {
-      classroom {
-                capacity (900)
-                facility { 
-                    hdmi (2) 
-                    vga (1)
-                }
+    IF4150-01 {
+      capacity (55)
+      facility { 
+          hdmi (2) 
+          vga (1)
       }
-      lecturer (Bayu, Yani)
+      lecturer_name (Yudis)
+      credits (2)
     }
-    IF4150 {
-            classroom {
-                capacity (900)
-                facility { 
-                    hdmi (2)
-                    vga (100)
-                }
-            }
-      lecturer (Bayu, Yani)
-        }
+    IF4150-02 {
+      capacity (55)
+      facility { 
+          hdmi (2) 
+          vga (1)
+      }
+      lecturer_name (Adi)
+      credits (2)
+    }
+    IF4150-03 {
+      capacity (55)
+      facility { 
+          hdmi (2)
+          vga (100)
+      }
+      lecturer_name (Bayu)
+      credits (2)
+    }
   }
   Preferences {
-    IF4050 {
-            facility { 
-                ac (1)
-            }
-        }
+    IF4150-K1 {
+      facility { 
+          ac (1)
+      }
+      time {
+        senin (23.00-24.00)
+      }
     }
+  }
   Constraint {
     * {
       time {
         * (11.00-13.00)
       }
-        }
+    }
   }
 }
