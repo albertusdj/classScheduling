@@ -14,4 +14,9 @@ public class TimeSlot {
     public Time getEnd() {
         return this.end;
     }
+
+    @Override
+    public String toString() {
+        return (start.toString() + '-' + end.toString());
+    }
 }

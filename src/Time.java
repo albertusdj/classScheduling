@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+
 public class Time {
     private String day;
     private int hour;
@@ -25,5 +27,10 @@ public class Time {
 
     public int getSecond(){
         return this.second;
+    }
+
+    @Override
+    public String toString() {
+        return day + " " + hour + ":" + minute + ":" + second;
     }
 }

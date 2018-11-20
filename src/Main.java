@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class Main {
@@ -31,6 +32,9 @@ public class Main {
 
         //invoking the parser.
         parser.schedule();
+
+        ///////////////////// NGETES AJA
+        System.out.println(s.getCourse());
 
         // Schedule.printSchedule(s); // TO-DO
 
@@ -76,25 +80,70 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
     @Override
     public void exitCourse(ScheduleParser.CourseContext ctx) {
         String name = (ctx.course_name().getText());
-        System.out.println(name);
-//        int quantity = Integer.parseInt(ctx.NUM().getText());
-//        Facility f = new Facility(name, quantity);
-//        s.addFacility(f);
+        int capacity = Integer.parseInt(ctx.capacity().getText());
+        String lecturerName = (ctx.lecturer_name().getText());
+        int credits = Integer.parseInt(ctx.credits().getText());
+        Course c = new Course(name, capacity, lecturerName, credits);
+        for (ScheduleParser.FacilityContext f : ctx.facility()){
+            String facilityName = (f.facility_name().getText());
+            int quantity = Integer.parseInt(f.quantity().getText());
+            Facility facility = new Facility(facilityName, quantity);
+            c.addFacility(facility);
+        }
+        s.addCourse(c);
     }
 
     @Override
-    public void exitPreference(ScheduleParser.PreferenceContext ctx) {
-//        String name = (ctx.NAME().getText());
-//        int quantity = Integer.parseInt(ctx.NUM().getText());
-//        Facility f = new Facility(name, quantity);
-//        s.addFacility(f);
+    public void exitPreferences(ScheduleParser.PreferencesContext ctx) {
+        if (!ctx.preference().isEmpty()) {
+            for (ScheduleParser.PreferenceContext p : ctx.preference()){
+                String courseName = (p.course_name().getText());
+                try {
+                    Course course = s.findCourse(courseName);
+                    for (ScheduleParser.FacilityContext f : p.facility()){
+                        String facilityName = (f.facility_name().getText());
+                        int quantity = Integer.parseInt(f.quantity().getText());
+                        Facility facility = new Facility(facilityName, quantity);
+                        course.addPreferredFacility(facility);
+                    }
+                    for (ScheduleParser.DatetimeContext dt : p.datetime()) {
+                        String day = (dt.day().getText());
+                        for (ScheduleParser.TimeContext t : dt.time()) {
+                            int startHour = Integer.parseInt(t.start().NUM(0).getText());
+                            int startMinute = Integer.parseInt(t.start().NUM(1).getText());
+                            int endHour = Integer.parseInt(t.end().NUM(0).getText());
+                            int endMinute = Integer.parseInt(t.end().NUM(1).getText());
+                            TimeSlot ts = new TimeSlot(new Time(day, startHour, startMinute, 0), new Time(day, endHour,endMinute,0));
+                            course.addPreferredTime(ts);
+                        }
+                    }
+                } catch (NullPointerException e){
+                    System.out.println("Preference error: no course found "+courseName);
+                }
+            }
+        }
     }
 
     @Override
-    public void exitConstraint(ScheduleParser.ConstraintContext ctx) {
-//        String name = (ctx.NAME().getText());
-//        int quantity = Integer.parseInt(ctx.NUM().getText());
-//        Facility f = new Facility(name, quantity);
-//        s.addFacility(f);
+    public void exitConstraints(ScheduleParser.ConstraintsContext ctx) {
+        for (ScheduleParser.ConstraintContext c : ctx.constraint()){
+            String courseName = (c.course_name().getText());
+            try {
+                Course course = s.findCourse(courseName);
+                for (ScheduleParser.DatetimeContext dt : c.datetime()) {
+                    String day = (dt.day().getText());
+                    for (ScheduleParser.TimeContext t : dt.time()) {
+                        int startHour = Integer.parseInt(t.start().NUM(0).getText());
+                        int startMinute = Integer.parseInt(t.start().NUM(1).getText());
+                        int endHour = Integer.parseInt(t.end().NUM(0).getText());
+                        int endMinute = Integer.parseInt(t.end().NUM(1).getText());
+                        TimeSlot ts = new TimeSlot(new Time(day, startHour, startMinute, 0), new Time(day, endHour,endMinute,0));
+                        course.addConstraintTime(ts);
+                    }
+                }
+            } catch (NullPointerException e){
+                System.out.println("Constraint error: no course found "+courseName);
+            }
+        }
     }
 }
