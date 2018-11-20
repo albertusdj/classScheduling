@@ -48,9 +48,9 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
     }
 
     @Override
-    public void exitClassroom(ScheduleParser.ClassroomContext ctx) {
-//        String name = (ctx.NAME().getText());
-//        int quantity = Integer.parseInt(ctx.NUM().getText());
+    public void exitClassrooms(ScheduleParser.ClassroomsContext ctx) {
+        String name = (ctx.classroom(0).classroom_name().getText());
+        System.out.println("test_name : " + name);
 //        Facility f = new Facility(name, quantity);
 //        s.addFacility(f);
     }

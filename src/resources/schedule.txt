@@ -1,11 +1,11 @@
 Schedule {
   Classroom {
-    7602 [40] {
+    R7602 [40] {
         proyektor (1)
         vga (1)
         hdmi (1)
     }
-    7606 [40] {
+    R7606 [40] {
       proyektor (1)
       vga (1)
       hdmi (1)
@@ -23,32 +23,32 @@ Schedule {
       selasa (10.00-12.00)
     }
   }
-  Class {
-    IF4150-01 {
+  Course {
+    IF4150-K01 {
       capacity (55)
       facility { 
           hdmi (2) 
           vga (1)
       }
-      lecturer_name (Yudis)
+      lecturerName (Yudis)
       credits (2)
     }
-    IF4150-02 {
+    IF4150-K02 {
       capacity (55)
       facility { 
           hdmi (2) 
           vga (1)
       }
-      lecturer_name (Adi)
+      lecturerName (Adi)
       credits (2)
     }
-    IF4150-03 {
+    IF4150-K03 {
       capacity (55)
       facility { 
           hdmi (2)
           vga (100)
       }
-      lecturer_name (Bayu)
+      lecturerName (Bayu)
       credits (2)
     }
   }

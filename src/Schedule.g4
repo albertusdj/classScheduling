@@ -2,7 +2,7 @@ grammar Schedule;
 schedule: 'Schedule {' classrooms lecturers courses preferences constraints '}';
 
 classrooms: 'Classroom {' classroom+ '}';
-classroom: classroom_name '[' capacity ']{' facility+ '}';
+classroom: classroom_name '[' capacity '] {' facility+ '}';
 classroom_name: ALPHANUMERIC;
 capacity: NUM;
 facility: facility_name '(' quantity ')';
@@ -19,7 +19,7 @@ start: NUM'.' NUM;
 end: NUM'.'NUM;
 
 courses: 'Course {' course+ '}';
-course: course_name '{ capacity (' capacity ') facility { ' facility* ' } lecturer_name (' lecturer_name ') credits (' credits ')}';
+course: course_name '{ capacity (' capacity ') facility { ' facility* ' } lecturerName (' lecturer_name ') credits (' credits ')}';
 course_name: ALPHANUMERIC'-'ALPHANUMERIC;
 credits: NUM;
 
@@ -31,3 +31,4 @@ constraint: course_name '{ time {' datetime+ '} }';
 NUM: [0-9]+;
 ALPHABET: [a-zA-Z]+;
 ALPHANUMERIC: [a-zA-Z0-9]+;
+WS: [ \t\r\n]+ -> skip;

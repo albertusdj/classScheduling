@@ -1,4 +1,4 @@
-// Generated from C:/Users/User/ClassScheduling/src\Schedule.g4 by ANTLR 4.7
+// Generated from C:/Users/irfanmim/Desktop/Kuliah Semester 7/Tugas-tugas/RPLSD Tubes 1/classScheduling/src\Schedule.g4 by ANTLR 4.7
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -19,7 +19,7 @@ public class ScheduleParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		NUM=25, ALPHABET=26, ALPHANUMERIC=27;
+		NUM=25, ALPHABET=26, ALPHANUMERIC=27, WS=28;
 	public static final int
 		RULE_schedule = 0, RULE_classrooms = 1, RULE_classroom = 2, RULE_classroom_name = 3, 
 		RULE_capacity = 4, RULE_facility = 5, RULE_facility_name = 6, RULE_quantity = 7, 
@@ -35,15 +35,15 @@ public class ScheduleParser extends Parser {
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, "'Schedule {'", "'}'", "'Classroom {'", "'['", "']{'", "'('", "')'", 
+		null, "'Schedule {'", "'}'", "'Classroom {'", "'['", "'] {'", "'('", "')'", 
 		"'Lecturer {'", "'{'", "','", "'-'", "'.'", "'Course {'", "'{ capacity ('", 
-		"') facility { '", "' } lecturer_name ('", "') credits ('", "')}'", "'Preferences {'", 
+		"') facility { '", "' } lecturerName ('", "') credits ('", "')}'", "'Preferences {'", 
 		"'{ facility {'", "'} time {'", "'} }'", "'Constraints {'", "'{ time {'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, null, null, null, null, null, null, null, null, null, null, null, 
 		null, null, null, null, null, null, null, null, null, null, null, null, 
-		null, "NUM", "ALPHABET", "ALPHANUMERIC"
+		null, "NUM", "ALPHABET", "ALPHANUMERIC", "WS"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -1498,7 +1498,7 @@ public class ScheduleParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\35\u00d3\4\2\t\2"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\36\u00d3\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
 		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
 		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
