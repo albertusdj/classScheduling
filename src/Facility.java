@@ -1,4 +1,6 @@
 public class Facility {
+    // PIC : MIM
+
     private String name;
     private int quantity;
 
