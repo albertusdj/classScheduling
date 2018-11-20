@@ -62,7 +62,7 @@ Schedule {
       }
     }
   }
-  Constraint {
+  Constraints {
     IF4150-K1 {
       time {
         senin (11.00-13.00)
