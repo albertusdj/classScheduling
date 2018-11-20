@@ -4,6 +4,7 @@ import org.antlr.v4.runtime.CommonTokenStream;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -49,14 +50,23 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
 
     @Override
     public void exitClassrooms(ScheduleParser.ClassroomsContext ctx) {
-        String name = (ctx.classroom(0).classroom_name().getText());
-        System.out.println("test_name : " + name);
 //        Facility f = new Facility(name, quantity);
 //        s.addFacility(f);
     }
 
     @Override
+    public void exitClassroom(ScheduleParser.ClassroomContext ctx) {
+        String name = ctx.classroom_name().getText();
+        System.out.println(name);
+    }
+
+    @Override
     public void exitLecturer(ScheduleParser.LecturerContext ctx) {
+        String name = ctx.lecturer_name().getText();
+        System.out.println(name);
+        String time = ctx.datetime(0).getText();
+        System.out.println(time);
+
 //        String name = (ctx.NAME().getText());
 //        int quantity = Integer.parseInt(ctx.NUM().getText());
 //        Facility f = new Facility(name, quantity);
