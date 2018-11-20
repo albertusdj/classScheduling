@@ -1,11 +1,11 @@
 Schedule {
   Classroom {
-    R7602 [40] {
+    7602 [40] {
         proyektor (1)
         vga (1)
         hdmi (1)
     }
-    R7606 [40] {
+    7606 [40] {
       proyektor (1)
       vga (1)
       hdmi (1)

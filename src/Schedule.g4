@@ -3,10 +3,10 @@ schedule: 'Schedule' '{' classrooms lecturers courses preferences constraints '}
 
 classrooms: 'Classroom' '{' classroom+ '}';
 classroom: classroom_name '[' capacity ']' '{' facility+ '}';
-classroom_name: ALPHANUMERIC;
+classroom_name: ALPHANUMERIC|NUM|ALPHABET;
 capacity: NUM;
 facility: facility_name '(' quantity ')';
-facility_name: ALPHABET;
+facility_name: ALPHANUMERIC|ALPHABET;
 quantity: NUM;
 
 lecturers: 'Lecturer' '{' lecturer+ '}';
@@ -20,7 +20,7 @@ end: NUM'.'NUM;
 
 courses: 'Course' '{' course+ '}';
 course: course_name '{' 'capacity' '(' capacity ')' 'facility' '{' facility* '}' 'lecturerName' '(' lecturer_name ')' 'credits' '(' credits ')' '}';
-course_name: ALPHANUMERIC'-'ALPHANUMERIC;
+course_name: ALPHANUMERIC'-'ALPHANUMERIC|NUM;
 credits: NUM;
 
 preferences: 'Preferences' '{' preference* '}';
