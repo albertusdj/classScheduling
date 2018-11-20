@@ -2,12 +2,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule {
-    // classroom[] classrooms
+    private List<Classroom> classrooms;
     // lecturer[] lecturers
     private List<Course> course;
 
     public Schedule(){
+        classrooms = new ArrayList<>();
         course = new ArrayList<>();
+    }
+
+    public List<Classroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void addClassroom(Classroom cr) {
+        classrooms.add(cr);
     }
 
     public List<Course> getCourse(){
