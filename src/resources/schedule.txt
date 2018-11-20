@@ -26,9 +26,9 @@ Schedule {
     }
     Yani {
       time {
-                kamis (00.00-02.00)
-            }
-        }
+        kamis (00.00-02.00)
+      }
+    }
   }
   Class {
     IF4050 {
@@ -38,9 +38,9 @@ Schedule {
                     hdmi (2) 
                     vga (1)
                 }
-            }
+      }
       lecturer (Bayu, Yani)
-        }
+    }
     IF4150 {
             classroom {
                 capacity (900)
@@ -52,14 +52,14 @@ Schedule {
       lecturer (Bayu, Yani)
         }
   }
-  preferences {
+  Preferences {
     IF4050 {
             facility { 
                 ac (1)
             }
         }
     }
-  constraint {
+  Constraint {
     * {
       time {
         * (11.00-13.00)
