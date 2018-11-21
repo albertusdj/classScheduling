@@ -5,9 +5,11 @@ public class Schedule {
     // classroom[] classrooms
     // lecturer[] lecturers
     private List<Course> course;
+    private List<Lecturer> lecturer;
 
     public Schedule(){
         course = new ArrayList<>();
+        lecturer = new ArrayList<>();
     }
 
     public List<Course> getCourse(){
@@ -16,6 +18,10 @@ public class Schedule {
 
     public void addCourse(Course c){
         course.add(c);
+    }
+
+    public void addLecturer(Lecturer l) {
+        lecturer.add(l);
     }
 
     public Course findCourse(String courseName){
