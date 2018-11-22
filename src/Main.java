@@ -35,7 +35,7 @@ public class Main {
 
         ///////////////////// NGETES AJA
         System.out.println(s.getCourse());
-        System.out.println(s.getClassrooms());
+        System.out.println(s.getClassroom());
 
         // Schedule.printSchedule(s); // TO-DO
 

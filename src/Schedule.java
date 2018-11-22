@@ -2,23 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule {
-    private List<Classroom> classrooms;
+    private List<Classroom> classroom;
     // lecturer[] lecturers
     private List<Course> course;
     private List<Lecturer> lecturer;
 
     public Schedule(){
-        classrooms = new ArrayList<>();
+        classroom = new ArrayList<>();
         course = new ArrayList<>();
         lecturer = new ArrayList<>();
     }
 
-    public List<Classroom> getClassrooms() {
-        return classrooms;
+    public List<Classroom> getClassroom() {
+        return classroom;
     }
 
     public void addClassroom(Classroom cr) {
-        classrooms.add(cr);
+        classroom.add(cr);
     }
 
     public List<Course> getCourse(){
