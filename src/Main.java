@@ -137,11 +137,22 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
                             int endHour = Integer.parseInt(t.end().NUM(0).getText());
                             int endMinute = Integer.parseInt(t.end().NUM(1).getText());
                             TimeSlot ts = new TimeSlot(new Time(day, startHour, startMinute, 0), new Time(day, endHour,endMinute,0));
-                            course.addPreferredTime(ts);
+                            Time start = ts.getStart();
+                            Time end = ts.getEnd();
+
+                            long secondStart = 3600 * start.getHour() + 60 * start.getMinute() + start.getSecond();
+                            long secondEnd = 3600 * end.getHour() + 60 * end.getMinute() + end.getSecond();
+
+                            if (secondStart < secondEnd) {
+                                course.addConstraintTime(ts);
+                            }
+                            else {
+                                System.out.println("Timeslot error : " + ts + " ignored");
+                            }
                         }
                     }
                 } catch (NullPointerException e){
-                    System.out.println("Preference error: no course found "+courseName);
+                    System.out.println("Preference error: course "+courseName+" not found. ignored");
                 }
             }
         }
@@ -161,11 +172,22 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
                         int endHour = Integer.parseInt(t.end().NUM(0).getText());
                         int endMinute = Integer.parseInt(t.end().NUM(1).getText());
                         TimeSlot ts = new TimeSlot(new Time(day, startHour, startMinute, 0), new Time(day, endHour,endMinute,0));
-                        course.addConstraintTime(ts);
+                        Time start = ts.getStart();
+                        Time end = ts.getEnd();
+
+                        long secondStart = 3600 * start.getHour() + 60 * start.getMinute() + start.getSecond();
+                        long secondEnd = 3600 * end.getHour() + 60 * end.getMinute() + end.getSecond();
+
+                        if (secondStart < secondEnd) {
+                            course.addConstraintTime(ts);
+                        }
+                        else {
+                            System.out.println("Timeslot error : " + ts + " ignored");
+                        }
                     }
                 }
             } catch (NullPointerException e){
-                System.out.println("Constraint error: no course found "+courseName);
+                System.out.println("Constraint error: course "+courseName+" not found. ignored");
             }
         }
     }

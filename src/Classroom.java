@@ -5,12 +5,29 @@ public class Classroom {
     private String name;
     private int capacity;
     private List<Facility> facilities;
+    private boolean[][] taken;
 
     public Classroom(String name, int capacity) {
         this.name = name;
         this.capacity = capacity;
 
         facilities = new ArrayList<>();
+
+        taken = new boolean[5][11];
+
+        for(int i=0; i<5; i++) {
+            for(int j=0; j<11; j++) {
+                taken[i][j] = false;
+            }
+        }
+    }
+
+    public boolean isTaken(int day, int hour) {
+        return taken[day][hour];
+    }
+
+    public void reverseTaken(int day, int hour) {
+        taken[day][hour] = !taken[day][hour];
     }
 
     @Override
