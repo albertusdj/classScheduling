@@ -35,6 +35,7 @@ public class Main {
 
         ///////////////////// NGETES AJA
         System.out.println(s.getCourse());
+        System.out.println(s.getClassrooms());
 
         // Schedule.printSchedule(s); // TO-DO
 
@@ -53,22 +54,16 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
     }
 
     @Override
-    public void exitClassrooms(ScheduleParser.ClassroomsContext ctx) {
-//        Facility f = new Facility(name, quantity);
-//        s.addFacility(f);
-    }
-
-    @Override
     public void exitClassroom(ScheduleParser.ClassroomContext ctx) {
         String name = ctx.classroom_name().getText();
         int capacity = Integer.parseInt(ctx.capacity().getText());
         Classroom cr = new Classroom(name, capacity);
-//        for (ScheduleParser.FacilityContext f : ctx.facility()) {
-//            String facilityName = (f.facility_name().getText());
-//            int quantity = Integer.parseInt(f.quantity().getText());
-//            Facility facility = new Facility(facilityName, quantity);
-//            cr.addFacility(facility);
-//        }
+        for (ScheduleParser.FacilityContext f : ctx.facility()) {
+            String facilityName = (f.facility_name().getText());
+            int quantity = Integer.parseInt(f.quantity().getText());
+            Facility facility = new Facility(facilityName, quantity);
+            cr.addFacility(facility);
+        }
         s.addClassroom(cr);
     }
 
