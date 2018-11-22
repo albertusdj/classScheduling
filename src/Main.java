@@ -75,14 +75,36 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
     @Override
     public void exitLecturer(ScheduleParser.LecturerContext ctx) {
         String name = ctx.lecturer_name().getText();
-        System.out.println(name);
-        String time = ctx.datetime(0).getText();
-        System.out.println(time);
 
-//        String name = (ctx.NAME().getText());
-//        int quantity = Integer.parseInt(ctx.NUM().getText());
-//        Facility f = new Facility(name, quantity);
-//        s.addFacility(f);
+        Lecturer l = new Lecturer(name);
+
+        for (ScheduleParser.DatetimeContext d : ctx.datetime()) {
+            String day = d.day().getText();
+
+            for (ScheduleParser.TimeContext t : d.time()) {
+                String completeTime = t.getText();
+                String[] startEndTime = completeTime.split("-");
+
+                String[] startTime = startEndTime[0].split(".");
+                int startHour = Integer.parseInt(startTime[0]);
+                int startMinute = Integer.parseInt(startTime[1]);
+                int startSecond = 0;
+
+                Time start = new Time(day, startHour, startMinute, startSecond);
+
+                String[] endTime = startEndTime[1].split(".");
+                int endHour = Integer.parseInt(endTime[0]);
+                int endMinute = Integer.parseInt(endTime[1]);
+                int endSecond = 0;
+
+                Time end = new Time(day, endHour, endMinute, endSecond);
+
+                TimeSlot ts = new TimeSlot(start, end);
+                l.addTimeSlot(ts);
+            }
+        }
+
+        s.addLecturer(l);
     }
 
     @Override
