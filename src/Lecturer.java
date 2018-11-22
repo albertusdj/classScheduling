@@ -18,6 +18,17 @@ public class Lecturer {
     }
 
     public void addTimeSlot(TimeSlot t) {
-        availability.add(t);
+        Time start = t.getStart();
+        Time end = t.getEnd();
+
+        long secondStart = 3600 * start.getHour() + 60 * start.getMinute() + start.getSecond();
+        long secondEnd = 3600 * end.getHour() + 60 * end.getMinute() + end.getSecond();
+
+        if (secondStart < secondEnd) {
+            availability.add(t);
+        }
+        else {
+            System.out.println("Timeslot error : " + t + " ignored");
+        }
     }
 }

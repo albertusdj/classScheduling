@@ -77,24 +77,22 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
             String day = d.day().getText();
 
             for (ScheduleParser.TimeContext t : d.time()) {
-                String completeTime = t.getText();
-                String[] startEndTime = completeTime.split("-");
-
-                String[] startTime = startEndTime[0].split(".");
-                int startHour = Integer.parseInt(startTime[0]);
-                int startMinute = Integer.parseInt(startTime[1]);
+                int startHour = Integer.parseInt(t.start().NUM(0).getText());
+                int startMinute = Integer.parseInt(t.start().NUM(1).getText());
                 int startSecond = 0;
 
                 Time start = new Time(day, startHour, startMinute, startSecond);
 
-                String[] endTime = startEndTime[1].split(".");
-                int endHour = Integer.parseInt(endTime[0]);
-                int endMinute = Integer.parseInt(endTime[1]);
+                int endHour = Integer.parseInt(t.end().NUM(0).getText());
+                int endMinute = Integer.parseInt(t.end().NUM(1).getText());
                 int endSecond = 0;
 
                 Time end = new Time(day, endHour, endMinute, endSecond);
 
                 TimeSlot ts = new TimeSlot(start, end);
+
+                System.out.println(ts);
+
                 l.addTimeSlot(ts);
             }
         }
