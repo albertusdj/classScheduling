@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //Reading the DSL script
         InputStream is =
-                ClassLoader.getSystemResourceAsStream("resources/schedule.txt");
+                ClassLoader.getSystemResourceAsStream("resources/schedule2.txt");
 
         //Loading the DSL script into the ANTLR stream.
         CharStream cs = new ANTLRInputStream(is);
@@ -33,12 +33,13 @@ public class Main {
         //invoking the parser.
         parser.schedule();
 
-        ///////////////////// NGETES AJA
-        System.out.println(s.getCourse());
-        System.out.println(s.getClassroom());
+//        ///////////////////// NGETES AJA
+//        System.out.println(s.getCourse());
+//        System.out.println(s.getClassroom());
 
-        // Schedule.printSchedule(s); // TO-DO
-
+        if (s.generate()) {
+            s.printSchedule();
+        }
     }
 }
 
@@ -90,8 +91,6 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
                 Time end = new Time(day, endHour, endMinute, endSecond);
 
                 TimeSlot ts = new TimeSlot(start, end);
-
-                System.out.println(ts);
 
                 l.addTimeSlot(ts);
             }
@@ -172,18 +171,8 @@ class MyScheduleBaseListener extends ScheduleBaseListener {
                         int endHour = Integer.parseInt(t.end().NUM(0).getText());
                         int endMinute = Integer.parseInt(t.end().NUM(1).getText());
                         TimeSlot ts = new TimeSlot(new Time(day, startHour, startMinute, 0), new Time(day, endHour,endMinute,0));
-                        Time start = ts.getStart();
-                        Time end = ts.getEnd();
 
-                        long secondStart = 3600 * start.getHour() + 60 * start.getMinute() + start.getSecond();
-                        long secondEnd = 3600 * end.getHour() + 60 * end.getMinute() + end.getSecond();
-
-                        if (secondStart < secondEnd) {
-                            course.addConstraintTime(ts);
-                        }
-                        else {
-                            System.out.println("Timeslot error : " + ts + " ignored");
-                        }
+                        course.addConstraintTime(ts);
                     }
                 }
             } catch (NullPointerException e){

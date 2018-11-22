@@ -18,10 +18,10 @@ Schedule {
   }
   Lecturer {
     Cecep {
-      rabu (14.00-17.00)
+      senin (11.00-14.00)
     }
     Budi {
-      selasa (11.00-14.00)
+      senin (08.00-10.00,11.00-12.00)
     }
     Anto {
       senin (08.00-11.00)
@@ -30,7 +30,7 @@ Schedule {
   Course {
     IF4150-K01 {
       capacity (40)
-      facility { 
+      facility {
           hdmi (1)
           vga (1)
       }
@@ -39,7 +39,7 @@ Schedule {
     }
     IF4150-K02 {
       capacity (40)
-      facility { 
+      facility {
           hdmi (1)
           vga (1)
       }
@@ -48,7 +48,7 @@ Schedule {
     }
     IF4150-K03 {
       capacity (40)
-      facility { 
+      facility {
           hdmi (1)
           vga (1)
       }
@@ -58,7 +58,7 @@ Schedule {
   }
   Preferences {
     IF4150-K01 {
-      facility { 
+      facility {
           ac (1)
       }
       time {
@@ -67,32 +67,6 @@ Schedule {
     }
   }
   Constraints {
-    IF4150-K01 {
-      time {
-        senin (11.00-13.00)
-        selasa (11.00-13.00)
-        rabu (11.00-13.00)
-        kamis (11.00-13.00)
-        jumat (11.00-13.00)
-      }
-    }
-    IF4150-K02 {
-      time {
-        senin (11.00-13.00)
-        selasa (11.00-13.00)
-        rabu (11.00-13.00)
-        kamis (11.00-13.00)
-        jumat (11.00-13.00)
-      }
-    }
-    IF4150-K03 {
-      time {
-        senin (11.00-13.00)
-        selasa (11.00-13.00)
-        rabu (11.00-13.00)
-        kamis (11.00-13.00)
-        jumat (11.00-13.00)
-      }
-    }
+
   }
 }

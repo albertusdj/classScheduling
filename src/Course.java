@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +14,7 @@ public class Course {
     private List<TimeSlot> preferredTime;
     private List<TimeSlot> constraintTime;
 
-    public Course(String name, int capacity, String lectureName, int credits){
+    public Course(String name, int capacity, String lecturerName, int credits){
         this.name = name;
         this.capacity = capacity;
         this.lecturerName = lecturerName;
@@ -54,7 +56,23 @@ public class Course {
     }
 
     public void addConstraintTime(TimeSlot t){
-        constraintTime.add(t);
+        Time start = t.getStart();
+        Time end = t.getEnd();
+
+        long secondStart = 3600 * start.getHour() + 60 * start.getMinute() + start.getSecond();
+        long secondEnd = 3600 * end.getHour() + 60 * end.getMinute() + end.getSecond();
+
+        if (secondStart < secondEnd) {
+            for (int i=start.getHour(); i<end.getHour(); i++) {
+                Time startTemp = new Time(start.getDay(), i, 0, 0);
+                Time endTemp = new Time(start.getDay(), i+1, 0, 0);
+
+                constraintTime.add(new TimeSlot(startTemp, endTemp));
+            }
+        }
+        else {
+            System.out.println("Constraint error : " + t + " ignored");
+        }
     }
 
     public List<TimeSlot> getConstraintTime() {

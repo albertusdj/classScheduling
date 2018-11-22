@@ -1,0 +1,62 @@
+Schedule {
+  Classroom {
+    7602 [40] {
+        proyektor (1)
+        vga (1)
+        hdmi (1)
+    }
+  }
+  Lecturer {
+    Cecep {
+      senin (14.00-16.00)
+    }
+    Budi {
+      senin (15.00-17.00)
+    }
+    Anto {
+      senin (17.00-18.00)
+    }
+  }
+  Course {
+    IF4150-K01 {
+      capacity (40)
+      facility {
+          hdmi (1)
+          vga (1)
+      }
+      lecturerName (Anto)
+      credits (2)
+    }
+    IF4150-K02 {
+      capacity (40)
+      facility {
+          hdmi (1)
+          vga (1)
+      }
+      lecturerName (Budi)
+      credits (2)
+    }
+    IF4150-K03 {
+      capacity (40)
+      facility {
+          hdmi (1)
+          vga (1)
+      }
+      lecturerName (Cecep)
+      credits (2)
+    }
+  }
+  Preferences {
+    IF4150-K01 {
+      facility {
+          ac (1)
+      }
+      time {
+        senin (23.00-24.00)
+      }
+    }
+  }
+  Constraints {
+
+  }
+}
